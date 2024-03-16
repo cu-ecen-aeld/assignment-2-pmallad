@@ -19,10 +19,10 @@ else
 	result=$(grep -rn "$searchstr" "$filesdir") 
 	if [[  -n "$result" ]];then
 		X=$(ls "$filesdir" | wc -l)
-		Y=$(grep -rn  -c "$searchstr" "$filesdir")
-		echo "$X is the number of files in the directory and all subdirectories and $Y is the number of matching lines found in respective files, where a matching line refers to a line which contains the word $searchstr";
+		Y=$(grep -rn  -c "$searchstr" "$filesdir" | wc -l)
+		echo "The number of files are ${X} and the number of matching lines are ${Y}";
 	else
-		echo "No mathes found"
+		echo "No matches found"
 	fi;
 fi;	
 
