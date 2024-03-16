@@ -1,14 +1,18 @@
 #!/bin/bash
 writefile="$1";
 writestr="$2";
-if [[ ! -d "$writefile" ]]; then
-    echo "Please provide a valid file path."
-    exit 1
-fi;
-
-if [[ -z "$writestr" ]]; then
-    echo "No search string specified."
-    
+filepath=$(dirname "$writefile")
+if [[ -z "$writefile" ]];then
+	echo "Please provide a valid file path."
+    	exit 1;
+elif [[ -z "$writestr" ]];then
+	echo "No search string specified."
+      
 else
-    grep -rn "$search_string" "$directory"
+	if [[ -d "$filepath" ]];then
+		echo "$writestr" > "$writefile"
+	else
+		mkdir "$filepath"
+		echo "$writestr" > "$writefile";
+	fi;
 fi;
