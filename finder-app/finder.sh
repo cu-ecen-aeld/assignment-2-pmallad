@@ -7,11 +7,12 @@
 filesdir="$1"
 searchstr="$2"
 if [[ ! -d "$filesdir" ]] ||[[ -z {"$searchstr"} ]];then
-	retval="1";
-	echo "$retval";
+	echo "Specify parameters";
 	if [[ ! -d "$filesdir" ]];then
 		echo "The specified path is not found";
+		exit 1;
 	else
+
 		echo "Please give the string";
 	fi;
 else
