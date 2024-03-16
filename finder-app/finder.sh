@@ -1,0 +1,23 @@
+#!/bin/bash
+# This code is designed to find a word from files in a directory
+filesdir="/home/pratyusha_sce/pt_test"
+searchstr="embedded"
+if [[ ! -d "$filesdir" ]] ||[[ -z {"$searchstr"} ]];then
+	retval="1";
+	echo "$retval";
+	if [[ ! -d "$filesdir" ]];then
+		echo "The specified path is not found";
+	else
+		echo "Please give the string";
+	fi;
+else
+	result=$(grep -rn "$searchstr" "$filesdir") 
+	if [[  -n "$result" ]];then
+		X=$(ls "$filesdir" | wc -l)
+		Y=$(grep -rn  -c "$searchstr" "$filesdir")
+		echo "$X is the number of files in the directory and all subdirectories and $Y is the number of matching lines found in respective files, where a matching line refers to a line which contains the word $searchstr";
+	else
+		echo "No mathes found"
+	fi;
+fi;	
+
