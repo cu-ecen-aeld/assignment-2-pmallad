@@ -11,9 +11,9 @@ if [[ ! -d "$filesdir" ]] ||[[ -z {"$searchstr"} ]];then
 	if [[ ! -d "$filesdir" ]];then
 		echo "The specified path is not found";
 		exit 1;
-	else
-
+	elif [[ -z {"$searchstr"} ]];then
 		echo "Please give the string";
+		exit 1;
 	fi;
 else
 	result=$(grep -rn "$searchstr" "$filesdir") 
