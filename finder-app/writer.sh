@@ -7,12 +7,15 @@ if [[ -z "$writefile" ]];then
     	exit 1;
 elif [[ -z "$writestr" ]];then
 	echo "No search string specified."
-      
+      	exit 1;
 else
 	if [[ -d "$filepath" ]];then
 		echo "$writestr" > "$writefile"
-	else
+	elif [[ ! -d "$filepath" ]];then
 		mkdir "$filepath"
 		echo "$writestr" > "$writefile";
+	else
+		echo "File could not be created";
+		exit 1;
 	fi;
 fi;
