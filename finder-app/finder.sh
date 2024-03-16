@@ -1,7 +1,11 @@
 #!/bin/bash
 # This code is designed to find a word from files in a directory
-filesdir="/home/pratyusha_sce/pt_test"
-searchstr="embedded"
+#echo "Input a file path";
+#read filesdir;
+#echo "Input a word";
+#read searchstr;
+filesdir="$1"
+searchstr="$2"
 if [[ ! -d "$filesdir" ]] ||[[ -z {"$searchstr"} ]];then
 	retval="1";
 	echo "$retval";
