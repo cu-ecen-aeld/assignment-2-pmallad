@@ -19,7 +19,7 @@ else
 	result=$(grep -rn "$searchstr" "$filesdir") 
 	if [[  -n "$result" ]];then
 		X=$(ls "$filesdir" | wc -l)
-		Y=$(grep -rn  -c "$searchstr" "$filesdir" | wc -l)
+		Y=$(grep -rn  -c "$searchstr" "$filesdir" | awk -F: '{sum += $2} END {print sum}')
 		echo "The number of files are ${X} and the number of matching lines are ${Y}";
 	else
 		echo "No matches found"
